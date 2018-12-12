@@ -16,7 +16,7 @@ steps:
         docker rmi eosio/contracts-builder:$BUILDKITE_COMMIT && \
         docker rmi eosio/contracts-builder:latest && \
         docker rmi gcr.io/b1-automation-dev/eosio/contracts-builder:$BUILDKITE_COMMIT && \
-        docker rmi gcr.io/b1-automation-dev/eosio/contracts-builder:latest && \
+        docker rmi gcr.io/b1-automation-dev/eosio/contracts-builder:latest
     label: "Docker build eosio/contracts-builder"
     agents:
       queue: "automation-docker-builder-fleet"
