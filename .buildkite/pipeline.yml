@@ -29,9 +29,9 @@ steps:
         gcloud --quiet auth activate-service-account b1-automation-svc@b1-automation-dev.iam.gserviceaccount.com --key-file=/etc/gcp-service-account.json && \
         docker-credential-gcr configure-docker && \
         echo "PULLING CONTRACTS-BUILDER IMAGE" && \
-        docker pull gcr.io/b1-automation-dev/eosio/eosio/contracts-builder:$BUILDKITE_COMMIT && \
+        docker pull gcr.io/b1-automation-dev/eosio/contracts-builder:$BUILDKITE_COMMIT && \
         echo "BUILDING CONTRACTS" && \
-        docker run -d -v $(pwd):/eosio.contracts -it gcr.io/b1-automation-dev/eosio/eosio/contracts-builder:$BUILDKITE_COMMIT 
+        docker run -d -v $(pwd):/eosio.contracts -it gcr.io/b1-automation-dev/eosio/contracts-builder:$BUILDKITE_COMMIT 
     artifact_paths: "contracts.tar.gz"
     label: "Build eosio.contracts"
     agents:
