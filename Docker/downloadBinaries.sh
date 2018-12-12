@@ -9,7 +9,7 @@ else
 	cdt_filename=$(echo "$cdt_url" | awk -F "/" '{print $NF}')
 fi
 
-# Make sure we could get both
+# Make sure we could get it
 if [ -z "$cdt_filename" ]; then
     echo "Either $1 is not a valid release for eosio.cdt, or there is not a published .deb package for the release."
     exit 1
