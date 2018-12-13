@@ -7,6 +7,7 @@ ARG cdt_release=latest
 RUN apt-get update && \
 DEBIAN_FRONTEND=noninteractive apt-get -y install openssl ca-certificates build-essential libbz2-dev zlib1g-dev libssl-dev libgmp3-dev libicu-dev cmake bc jq curl wget net-tools unzip gnupg git graphviz 
 
+# Get, build, and install EOS
 RUN git clone -b $eos_branch https://github.com/EOSIO/eos.git --recursive \
 && cd eos && echo "$branch:$(git rev-parse HEAD)" > /etc/eosio-version \
 && ./eosio_build.sh && ./eosio_install.sh
@@ -22,6 +23,9 @@ RUN for filename in $(ls *.deb); do /usr/bin/dpkg -i "$filename" && rm -f "$file
 ENV EOSIO_ROOT=/opt/eosio
 ENV LD_LIBRARY_PATH /usr/local/lib
 ENV PATH /opt/eosio/bin:/opt/eosio.cdt/1.4.1/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+# # Create a user with id 2000 (for use with buildkite)
+# RUN useradd -r -u 2000 -g buildkite-agent buildkite-agent
 
 # Add the entrypoint script
 ADD buildContracts.sh /
