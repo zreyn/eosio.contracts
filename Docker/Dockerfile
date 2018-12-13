@@ -24,9 +24,6 @@ ENV EOSIO_ROOT=/opt/eosio
 ENV LD_LIBRARY_PATH /usr/local/lib
 ENV PATH /opt/eosio/bin:/opt/eosio.cdt/1.4.1/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-# # Create a user with id 2000 (for use with buildkite)
-# RUN useradd -r -u 2000 -g buildkite-agent buildkite-agent
-
 # Add the entrypoint script
 ADD buildContracts.sh /
 ENTRYPOINT ["/buildContracts.sh"]
