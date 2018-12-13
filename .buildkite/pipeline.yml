@@ -31,7 +31,7 @@ steps:
         echo "PULLING CONTRACTS-BUILDER IMAGE" && \
         docker pull gcr.io/b1-automation-dev/eosio/contracts-builder:latest && \
         echo "BUILDING CONTRACTS" && \
-        docker run --user 1001 -v $(pwd):/eosio.contracts -it gcr.io/b1-automation-dev/eosio/contracts-builder:latest 
+        docker run -v $(pwd):/eosio.contracts -it gcr.io/b1-automation-dev/eosio/contracts-builder:latest 
     artifact_paths: "contracts.tar.gz"
     label: "Build eosio.contracts"
     agents:
